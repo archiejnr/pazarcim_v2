@@ -116,9 +116,6 @@ body {
 
 
 }
-body::-webkit-scrollbar {
-    width: 2em;
-}
 h2, .h2 {
 	font-size: 20px;
 }
