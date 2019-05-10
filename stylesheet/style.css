@@ -776,8 +776,11 @@ ul.currencies_list li a:hover {
 }
 ul#cart-sidebar {
 	padding: 10px 15px 0px;
-}
 
+}
+#cart-sidebar::-webkit-scrollbar {
+    width: 5px;
+}
 .col-left .block-cart .block-content ul li .product-details .btn-edit {padding: 0px 0px; border:none; display:block; text-align:center}
 
 .block-cart ul {
