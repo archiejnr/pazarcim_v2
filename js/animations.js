@@ -51,8 +51,6 @@ if(window.location.href=="http://127.0.0.1:3000/list.html"||window.location.href
              let productImage=z.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.getAttribute('src');
              let cartSnipet='<li class="item first"><div class="item-inner"><a class="product-image" title="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" href="#l"><img alt="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" src='+productImage+'></a><div class="product-details"><div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Çıkar</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div><!--access--><strong>1</strong> x <span class="price">'+price+'</span><p class="product-name"><a href="product-detail.html">'+productName+'</a></p></div></div></li>';
              let index=p;
-          //
-          //
              totalprice=+price;
              cartParameters();
              sStorage(index,productName,productImage,price);
@@ -71,6 +69,5 @@ if(window.location.href=="http://127.0.0.1:3000/list.html"||window.location.href
          function cartParameters(){
             cartItems.innerText++;
             cartItems.parentElement.parentElement.parentElement.querySelector('.top-subtotal').innerText=cartItems.innerText+" ürün";
-
          };
 };
