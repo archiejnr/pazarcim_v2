@@ -7,9 +7,11 @@ let cartDropdwn=document.querySelector('.fl-mini-cart-content');
 let miniProductList=document.querySelector('#cart-sidebar');
 let productName;
 let placeholder=document.querySelector('#placeholder');
-
-
-
+let cartTotal=document.querySelector('#cart-total-price');
+let totalprice=0;
+//let removeButtonArray=document.querySelector('.');
+/********************************************************************************************************************/
+/********************************************************************************************************************/
 if(window.location.href=="http://127.0.0.1:3000/list.html"||window.location.href=="http://127.0.0.1:3000/vegetables.html" ||window.location.href=="http://127.0.0.1:3000/fruits.html"||window.location.href=='http://127.0.0.1:3000/shopping-cart.html'){
   //the following code will only work for the pages listed above dont forget to change the addresses when you go official
   cartItems.innerHTML=0;
@@ -20,7 +22,7 @@ if(window.location.href=="http://127.0.0.1:3000/list.html"||window.location.href
       let body=document.querySelector('#tablerow');
       body.insertAdjacentHTML('afterend',tablerow);
     }
-  }
+  };
   //sessionStorage reloading previously done orders on the same tab for list.htm,fruits.html,vegetables.html
   if(sessionStorage){
       for(let x=0;x<sessionStorage.length/3;x++){
@@ -28,37 +30,33 @@ if(window.location.href=="http://127.0.0.1:3000/list.html"||window.location.href
             let cartSnipet='<li class="item first"><div class="item-inner"><a class="product-image" title="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" href="#l"><img alt="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" src='+sessionStorage.getItem(index+'b')+'></a><div class="product-details"><div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Çıkar</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div><!--access--><strong>1</strong> x <span class="price">'+sessionStorage.getItem(index+'c')+'</span><p class="product-name"><a href="product-detail.html">'+sessionStorage.getItem(index+'a')+'</a></p></div></div></li>';
             placeholder.insertAdjacentHTML('beforeend',cartSnipet);
             cartParameters();
-           }
-         }
-
+          }
+        }
+        else{
+          cartDropdwn.querySelector('.top-subtotal').innerText=0+'ürün';
+          cartTotal.innerText='$'+0;
+        };
          //code for the shopping cart on the list.html page
-         //
-         //
-         //
-
-
          for(let i=0;i<buttonArray.length;i++){
            buttonArray[i].addEventListener('click',function(){
              cart(i,buttonArray[i]);
            })
          };
-
          //icrementing the shopping cart objects
          function cart(p,z){
-
            //code for cartDD
              productName=z.parentElement.parentElement.querySelector('.product-name').innerText;
              let y=z.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.getAttribute('src');
              let price=z.parentElement.previousElementSibling.querySelector('.price').innerText;
              let productImage=z.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.getAttribute('src');
              let cartSnipet='<li class="item first"><div class="item-inner"><a class="product-image" title="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" href="#l"><img alt="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" src='+productImage+'></a><div class="product-details"><div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Çıkar</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div><!--access--><strong>1</strong> x <span class="price">'+price+'</span><p class="product-name"><a href="product-detail.html">'+productName+'</a></p></div></div></li>';
-             let archie=p;
-
-
+             let index=p;
+          //
+          //
+             totalprice=+price;
              cartParameters();
-             sStorage(archie,productName,productImage,price);
+             sStorage(index,productName,productImage,price);
              return placeholder.insertAdjacentHTML('beforeend',cartSnipet);
-
          };
          //session storage features
          function sStorage(a,b,c,d){
@@ -70,17 +68,9 @@ if(window.location.href=="http://127.0.0.1:3000/list.html"||window.location.href
            sessionStorage.setItem(p+'b',image);
            sessionStorage.setItem(p+'c',price);
          };
-
          function cartParameters(){
             cartItems.innerText++;
-            cartItems.parentElement.parentElement.parentElement.querySelector('.top-subtotal').innerText=cartItems.innerText+" ürün"
+            cartItems.parentElement.parentElement.parentElement.querySelector('.top-subtotal').innerText=cartItems.innerText+" ürün";
+
          };
-
-
-}
-//sessionStorage for shopping-cart.html
-//************************************************************************************************************************
-/*************************************************************************************************************************
-***************************************************************************************************************************
-*****************************************************************************************************************************
-*/
+};
